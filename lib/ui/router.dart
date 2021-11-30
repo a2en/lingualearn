@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:lingualearn/data/constants/app_constants.dart';
+import 'package:lingualearn/core/constants/app_constants.dart';
 import 'package:lingualearn/ui/views/login.dart';
 import 'package:lingualearn/ui/views/splash.dart';
 

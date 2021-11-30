@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lingualearn/data/constants/app_colors.dart';
-import 'package:lingualearn/data/constants/app_constants.dart';
+import 'package:lingualearn/core/constants/app_constants.dart';
 import 'package:no_context_navigation/no_context_navigation.dart';
 
 class SplashScreen extends StatefulWidget {

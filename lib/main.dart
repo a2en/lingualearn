@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lingualearn/data/constants/app_colors.dart';
+import 'package:lingualearn/core/constants/app_colors.dart';
 import 'package:lingualearn/provider.dart';
 import 'package:provider/provider.dart';
 import 'package:lingualearn/ui/router.dart' as rt;
-import 'data/constants/app_constants.dart';
+import 'core/constants/app_constants.dart';
 import 'package:no_context_navigation/no_context_navigation.dart';
 
 void main() {

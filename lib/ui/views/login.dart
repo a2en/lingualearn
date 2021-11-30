@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lingualearn/data/constants/app_colors.dart';
+import 'package:lingualearn/core/constants/app_colors.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

@@ -1,12 +1,20 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lingualearn/ui/widgets/toast.dart';
 
 class Authentication {
-  static Future<User?> signInWithGoogle() async {
+
+  final StreamController<User> _userController = StreamController<User>();
+
+  Stream<User> get user => _userController.stream;
+
+
+  Future<bool> signInWithGoogle() async {
     FirebaseAuth auth = FirebaseAuth.instance;
-    User? user;
+    User? appUser;
 
     final GoogleSignIn googleSignIn = GoogleSignIn();
 
@@ -26,7 +34,8 @@ class Authentication {
         final UserCredential userCredential =
         await auth.signInWithCredential(credential);
 
-        user = userCredential.user;
+        appUser = userCredential.user;
+        _userController.add(userCredential.user!);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
           // handle the error here
@@ -42,10 +51,10 @@ class Authentication {
       }
     }
 
-    return user;
+    return appUser!=null;
   }
 
-  static Future<void> signOut() async {
+   Future<void> signOut() async {
     try {
       await FirebaseAuth.instance.signOut();
     } catch (e) {

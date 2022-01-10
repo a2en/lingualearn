@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lingualearn/core/constants/app_constants.dart';
+import 'package:lingualearn/services/auth_service.dart';
 import 'package:no_context_navigation/no_context_navigation.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -14,8 +17,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 1000), () {
-      navService.pushNamed(RoutePaths.Login);
+    Future.delayed(const Duration(milliseconds: 1000), () async{
+      bool isLoggedIn = await Provider.of<Authentication>(context,listen: false).isLoggedIn();
+      if (isLoggedIn) {
+        navService.pushNamed(RoutePaths.Home);
+      } else {
+        navService.pushNamed(RoutePaths.Login);
+      }
     });
   }
 
